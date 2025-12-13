@@ -7,6 +7,7 @@ import Nosotros from "../pages/Nosotros.vue";
 import ProductsListView from "../views/ProductsListView.vue";
 import FairPlayProjectView from "../views/FairPlayProjectView.vue";
 import FairPlayArenaView from "../views/FairPlayArenaView.vue";
+import NotFoundView from "../views/NotFoundView.vue";
 import Gracias from "../components/Gracias.vue";
 
 export default createRouter({
@@ -20,5 +21,7 @@ export default createRouter({
         { path: "/productos/fair-play", component: FairPlayProjectView },
         { path: "/productos/fair-play-arena", component: FairPlayArenaView },
         { path: '/gracias', component: Gracias },
+        // Catch-all route for 404
+        { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundView },
     ],
 });

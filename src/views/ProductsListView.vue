@@ -11,7 +11,7 @@
           </div>
           <h3>FairPlay Arena</h3>
           <p>
-            App movil moderna para la gestión y organizacion de encuentros deportivos, gestiona, invita, califica y organiza tus encuentros.
+            App movil moderna para la gestión y organizacion de actividades deportivas, gestiona, invita, califica y organiza tus eventos.
           </p>
           <!-- <div class="tags">
             <span class="tag">Vue 3</span>
