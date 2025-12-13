@@ -7,15 +7,15 @@
     <form class="contact-form">
       <div class="form-group">
         <label class="label" for="name">Nombre</label>
-        <input id="name" type="text" class="input" placeholder="Tu nombre" />
+        <input id="name" type="text" class="input" placeholder="Nombre completo" />
       </div>
       <div class="form-group">
         <label class="label" for="email">Correo</label>
-        <input id="email" type="email" class="input" placeholder="tucorreo@example.com" />
+        <input id="email" type="email" class="input" placeholder="correo@ejemplo.com" />
       </div>
       <div class="form-group">
         <label class="label" for="message">Mensaje</label>
-        <textarea id="message" rows="4" class="input" placeholder="Escribe tu mensaje"></textarea>
+        <textarea id="message" rows="4" class="input" placeholder="Escribe tu mensaje aquí..."></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>

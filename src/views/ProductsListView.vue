@@ -2,6 +2,9 @@
   <div class="products-list-page bg-gradient-dark">
     <div class="container fade-in">
       <h1 class="text-center text-gradient mb-xl">Nuestros Productos</h1>
+      <p class="mb-lg text-center description-text">
+        Innovación tecnológica al servicio del deporte. Desarrollamos herramientas digitales intuitivas y potentes que transforman la experiencia de jugadores, organizadores y clubes, llevando la gestión deportiva al siguiente nivel.
+      </p>
       
       <div class="products-grid">
                 <!-- Card: FairPlay Arena -->
@@ -143,5 +146,13 @@
 
 .w-full {
   width: 100%;
+}
+
+.description-text {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 </style>
