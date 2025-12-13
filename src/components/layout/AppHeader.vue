@@ -13,6 +13,7 @@
         <li><RouterLink to="/">Inicio</RouterLink></li>
         <li><RouterLink to="/servicios">Servicios</RouterLink></li>
         <li><RouterLink to="/nosotros">Nosotros</RouterLink></li>
+        <li><RouterLink to="/productos">Nuestros Productos</RouterLink></li>
         <li><RouterLink to="/contacto">Contacto</RouterLink></li>
       </ul>
     </nav>
