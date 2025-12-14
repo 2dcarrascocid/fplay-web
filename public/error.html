@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Página no encontrada</title>
+
+    <style>
+        /* =========================
+       Variables de diseño
+       ========================= */
+        :root {
+            --color-dark-bg: #0f172a;
+            --color-dark-bg-secondary: #020617;
+            --color-dark-text: #e5e7eb;
+            --color-dark-text-muted: #9ca3af;
+
+            --color-primary-from: #22d3ee;
+            --color-primary-to: #6366f1;
+
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-xl: 2rem;
+        }
+
+        /* =========================
+       Reset básico
+       ========================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+                sans-serif;
+            background: linear-gradient(135deg,
+                    var(--color-dark-bg),
+                    var(--color-dark-bg-secondary));
+            color: var(--color-dark-text);
+        }
+
+        /* =========================
+       Layout
+       ========================= */
+        .not-found-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* =========================
+       Animaciones
+       ========================= */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+       Tipografía
+       ========================= */
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.8;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg,
+                    var(--color-primary-from),
+                    var(--color-primary-to));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--color-dark-text-muted);
+            max-width: 500px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        /* =========================
+       Botón
+       ========================= */
+        .actions {
+            margin-top: var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg,
+                    var(--color-primary-from),
+                    var(--color-primary-to));
+            color: #020617;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="not-found-page">
+        <div class="container text-center fade-in">
+            <h1 class="error-code text-gradient">404</h1>
+            <h2 class="error-title">Página no encontrada</h2>
+            <p class="error-message">
+                Lo sentimos, la página que buscas no existe o ha sido movida.
+            </p>
+
+            <div class="actions">
+                <a href="/" class="btn btn-primary">
+                    Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

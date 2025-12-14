@@ -7,9 +7,9 @@
         Una solución moderna para la gestión de clubes deportivos
       </p>
       <div class="hero-tags">
-        <span class="tag">Vue 3</span>
-        <span class="tag">Vite</span>
-        <span class="tag">Axios</span>
+        <span class="tag">Nominas</span>
+        <span class="tag">Finanzas</span>
+        <span class="tag">Clubes</span>
       </div>
     </header>
 

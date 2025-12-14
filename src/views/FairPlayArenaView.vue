@@ -4,72 +4,85 @@
     <header class="hero-section container text-center fade-in">
       <h1 class="hero-title text-gradient">FairPlay Arena</h1>
       <p class="hero-subtitle">
-        Una solución moderna para la gestión de clubes deportivos
+        La plataforma que conecta deportistas, equipos y ligas para promover un deporte sano, justo y libre de conductas antideportivas.
       </p>
+      
       <div class="hero-tags">
-        <span class="tag">Vue 3</span>
-        <span class="tag">Vite</span>
-        <span class="tag">Axios</span>
+        <span class="tag">Deportistas</span>
+        <span class="tag">Equipos</span>
+        <span class="tag">Ligas</span>
+      </div>
+
+      <div class="intro-box fade-in">
+        <p>
+          Organiza partidos, gestiona tus eventos, registra rendimiento, comparte invitaciones con enlaces inteligentes y construye tu reputación deportiva a través del puntaje Fair Play.
+        </p>
       </div>
     </header>
 
-    <!-- Project Features Grid -->
+    <!-- Features Section -->
     <section class="features-section container mt-lg">
-      <h2 class="section-title text-center text-gradient mb-lg">Características</h2>
+      <h2 class="section-title text-center text-gradient mb-lg">Con Arena puedes</h2>
       <div class="features-grid">
         <article class="feature-card fade-in" style="animation-delay: 0.1s">
-          <div class="feature-icon">✨</div>
-          <h3>Diseño Moderno</h3>
-          <p>Interfaz oscura con gradientes vibrantes y animaciones suaves para una experiencia premium.</p>
+          <div class="feature-icon">⚡</div>
+          <h3>Eventos al Instante</h3>
+          <p>Crear o unirte a partidos y eventos deportivos en segundos.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.2s">
-          <div class="feature-icon">🔐</div>
-          <h3>Autenticación</h3>
-          <p>Sistema completo de login, registro, gestión de sesiones y protección de rutas.</p>
+          <div class="feature-icon">🔗</div>
+          <h3>Invitaciones Inteligentes</h3>
+          <p>Compartir invitaciones mediante links seguros compatibles con Android.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.3s">
-          <div class="feature-icon">⚽</div>
-          <h3>Gestión Financiera</h3>
-          <p>Crear, listar y gestionar finanzas del club ingreso y egresos.</p>
+          <div class="feature-icon">👤</div>
+          <h3>Perfil Deportivo</h3>
+          <p>Llevar tu perfil con foto, comuna, rol de juego y estadísticas completa.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.4s">
-          <div class="feature-icon">👥</div>
-          <h3>Sistema de Jugadores</h3>
-          <p>Administración completa de perfiles de jugadores y conformación de equipos.</p>
+          <div class="feature-icon">📷</div>
+          <h3>Escaneo QR</h3>
+          <p>Escanear códigos QR para sumar jugadores a tus partidos más rápido.</p>
         </article>
         
         <article class="feature-card fade-in" style="animation-delay: 0.5s">
-          <div class="feature-icon">🏆</div>
-          <h3>Clubes Deportivos</h3>
-          <p>Gestión integral de clubes y organizaciones deportivas en una sola plataforma.</p>
+          <div class="feature-icon">📊</div>
+          <h3>Historial y Conducta</h3>
+          <p>Visualizar tu historial, sanciones y comportamiento en la cancha.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.6s">
-          <div class="feature-icon">📱</div>
-          <h3>Responsive</h3>
-          <p>Diseño totalmente adaptable que funciona perfecto en móviles, tablets y escritorio.</p>
+          <div class="feature-icon">🆔</div>
+          <h3>Identidad Única</h3>
+          <p>Mantener una identidad deportiva única y verificable en la comunidad.</p>
+        </article>
+
+         <article class="feature-card fade-in" style="animation-delay: 0.7s">
+          <div class="feature-icon">🤝</div>
+          <h3>Deporte Limpio</h3>
+          <p>Promover un deporte limpio, respetuoso y sin trampas.</p>
         </article>
       </div>
     </section>
 
-    <!-- Products Showcase Placeholder -->
-    <section class="products-showcase container mt-xl mb-lg">
-       <h2 class="section-title text-center text-gradient mb-lg">Nuestros Productos</h2>
-       <div class="products-grid">
-         <!-- Placeholder for actual product links -->
-         <div class="product-link-placeholder fade-in">
-           <h3>Producto Principal</h3>
-           <p>Próximamente disponible</p>
-           <button class="btn btn-primary mt-auto">Ver Demo</button>
-         </div>
-         <div class="product-link-placeholder fade-in">
-           <h3>App Móvil</h3>
-           <p>Próximamente disponible</p>
-           <button class="btn btn-secondary mt-auto">Descargar</button>
-         </div>
+    <!-- Target Audience Section -->
+    <section class="target-audience container mt-xl fade-in">
+        <div class="audience-card">
+            <h2 class="section-title text-center text-gradient mb-md">¿Para quién es Arena?</h2>
+            <p class="audience-text text-center">
+                Arena está diseñado para <strong>deportistas amateurs, clubes, ligas locales y comunidades</strong> que buscan organizarse mejor, reducir conflictos y vivir el deporte de manera justa y transparente.
+            </p>
+        </div>
+    </section>
+
+    <!-- Call to Action / Footer -->
+    <section class="cta-section container mt-xl mb-xl text-center fade-in">
+       <div class="cta-content">
+           <p class="cta-main-text">Construyamos juntos un ecosistema deportivo más seguro, honesto y entretenido.</p>
+           <h3 class="cta-slogan text-gradient">Arena: juega limpio. Siempre.</h3>
        </div>
     </section>
   </div>
@@ -94,23 +107,36 @@
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--color-dark-text-muted);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-box {
+    margin-top: var(--spacing-lg);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-dark-text);
 }
 
 .hero-tags {
   display: flex;
   justify-content: center;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .tag {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   font-size: 0.875rem;
-  color: var(--color-dark-text);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-primary);
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .features-grid {
@@ -121,16 +147,17 @@
 
 .feature-card {
   background: var(--color-dark-surface);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .feature-icon {
@@ -141,6 +168,7 @@
 .feature-card h3 {
   color: var(--color-dark-text);
   margin-bottom: var(--spacing-sm);
+  font-size: 1.25rem;
 }
 
 .feature-card p {
@@ -149,36 +177,51 @@
   line-height: 1.6;
 }
 
-.products-showcase {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: var(--spacing-xl);
+.audience-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
 }
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+.audience-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-dark-text-muted);
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.product-link-placeholder {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 200px;
+.audience-text strong {
+    color: var(--color-primary-light);
 }
 
-.product-link-placeholder h3 {
-   color: var(--color-dark-text); 
+.cta-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.cta-main-text {
+    font-size: 1.25rem;
+    color: var(--color-dark-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-slogan {
+    font-size: 2rem;
+    font-weight: 800;
 }
 
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+     font-size: 1.1rem;
+  }
+
+  .cta-slogan {
+      font-size: 1.5rem;
   }
 }
 </style>
