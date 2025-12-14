@@ -59,12 +59,6 @@
           <h3>Identidad Única</h3>
           <p>Mantener una identidad deportiva única y verificable en la comunidad.</p>
         </article>
-
-         <article class="feature-card fade-in" style="animation-delay: 0.7s">
-          <div class="feature-icon">🤝</div>
-          <h3>Deporte Limpio</h3>
-          <p>Promover un deporte limpio, respetuoso y sin trampas.</p>
-        </article>
       </div>
     </section>
 
@@ -73,7 +67,7 @@
         <div class="audience-card">
             <h2 class="section-title text-center text-gradient mb-md">¿Para quién es Arena?</h2>
             <p class="audience-text text-center">
-                Arena está diseñado para <strong>deportistas amateurs, clubes, ligas locales y comunidades</strong> que buscan organizarse mejor, reducir conflictos y vivir el deporte de manera justa y transparente.
+              Para deportistas amateurs, clubes y ligas locales que buscan organizarse mejor, reducir conflictos y vivir el deporte de forma justa y transparente. Construyamos juntos un ecosistema deportivo más seguro, honesto y entretenido.
             </p>
         </div>
     </section>
@@ -81,10 +75,30 @@
     <!-- Call to Action / Footer -->
     <section class="cta-section container mt-xl mb-xl text-center fade-in">
        <div class="cta-content">
-           <p class="cta-main-text">Construyamos juntos un ecosistema deportivo más seguro, honesto y entretenido.</p>
-           <h3 class="cta-slogan text-gradient">Arena: juega limpio. Siempre.</h3>
-       </div>
+           <h3 class="cta-slogan text-gradient">Juega limpio, Juega Arena!</h3>
+        </div>
+            <section class="download-cards container mt-xl mb-xl text-center fade-in">
+      <div class="card left-card">
+        <a href="https://fairplay-links.3ldago.workers.dev/j/p/e4ccfff7-c1e6-4230-b94e-3d8fad637ba3"
+           target="_blank"
+           rel="noopener">
+          <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+               alt="Google Play Store"
+               class="store-badge"/>
+        </a>
+      </div>
+      <div class="card right-card">
+        <a href="#" class="pending-ios">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+               alt="Apple App Store (pending)"
+               class="store-badge"/>
+        </a>
+      </div>
     </section>
+    </section>
+
+    <!-- Download Cards -->
+
   </div>
 </template>
 
@@ -210,6 +224,28 @@
     font-size: 2rem;
     font-weight: 800;
 }
+
+.download-cards {
+  display: flex;
+  justify-content: center; /* center both cards */
+  align-items: center;
+  gap: var(--spacing-lg); /* space between cards */
+  max-width: 800px;
+  margin: var(--spacing-xl) auto;
+}
+
+.download-cards .card {
+  flex: none; /* prevent stretching */
+  text-align: center;
+}
+
+/* Ensure both store badges have the same visual size */
+.store-badge {
+  width: 180px;   /* same width for both badges */
+  height: auto;   /* keep aspect ratio */
+  max-height: 60px; /* optional max height to keep them balanced */
+}
+
 
 @media (max-width: 768px) {
   .hero-title {
