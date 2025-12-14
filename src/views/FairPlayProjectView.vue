@@ -15,42 +15,42 @@
 
     <!-- Project Features Grid -->
     <section class="features-section container mt-lg">
-      <h2 class="section-title text-center text-gradient mb-lg">Características</h2>
+      <h2 class="section-title text-center text-gradient mb-lg">Funcionalidades Principales</h2>
       <div class="features-grid">
         <article class="feature-card fade-in" style="animation-delay: 0.1s">
-          <div class="feature-icon">✨</div>
-          <h3>Diseño Moderno</h3>
-          <p>Interfaz oscura con gradientes vibrantes y animaciones suaves para una experiencia premium.</p>
+          <div class="feature-icon">🏆</div>
+          <h3>Campeonatos y Ligas</h3>
+          <p>Configura torneos, fases de grupos y playoffs con generación automática de fixtures.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.2s">
-          <div class="feature-icon">🔐</div>
-          <h3>Autenticación</h3>
-          <p>Sistema completo de login, registro, gestión de sesiones y protección de rutas.</p>
+          <div class="feature-icon">📈</div>
+          <h3>Estadísticas en Vivo</h3>
+          <p>Tablas de posiciones, goleadores y tarjetas actualizadas en tiempo real.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.3s">
-          <div class="feature-icon">⚽</div>
-          <h3>Gestión Financiera</h3>
-          <p>Crear, listar y gestionar finanzas del club ingreso y egresos.</p>
+          <div class="feature-icon">💰</div>
+          <h3>Control Financiero</h3>
+          <p>Gestión transparente de cuotas, pagos de arbitraje y balances del club.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.4s">
-          <div class="feature-icon">👥</div>
-          <h3>Sistema de Jugadores</h3>
-          <p>Administración completa de perfiles de jugadores y conformación de equipos.</p>
+          <div class="feature-icon">📝</div>
+          <h3>Ficha de Partido</h3>
+          <p>Digitaliza el control del juego con actas digitales y reportes de árbitros.</p>
         </article>
         
         <article class="feature-card fade-in" style="animation-delay: 0.5s">
-          <div class="feature-icon">🏆</div>
-          <h3>Clubes Deportivos</h3>
-          <p>Gestión integral de clubes y organizaciones deportivas en una sola plataforma.</p>
+          <div class="feature-icon">👥</div>
+          <h3>Gestión de Plantillas</h3>
+          <p>Administración de nóminas, verificaciones y perfiles de jugadores.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.6s">
           <div class="feature-icon">📱</div>
-          <h3>Responsive</h3>
-          <p>Diseño totalmente adaptable que funciona perfecto en móviles, tablets y escritorio.</p>
+          <h3>Portal de Jugadores</h3>
+          <p>Acceso individual para que cada jugador revise sus estadísticas y calendario.</p>
         </article>
       </div>
     </section>

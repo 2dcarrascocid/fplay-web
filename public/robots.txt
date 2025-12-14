@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fairplaychile.com/sitemap.xml
