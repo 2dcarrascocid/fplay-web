@@ -20,11 +20,11 @@
 
     <nav :class="{ 'nav-open': isMenuOpen }">
       <ul class="flex gap-md nav-list">
-        <li><RouterLink to="/" @click="closeMenu">Inicio</RouterLink></li>
-        <li><RouterLink to="/servicios" @click="closeMenu">Servicios</RouterLink></li>
-        <li><RouterLink to="/nosotros" @click="closeMenu">Nosotros</RouterLink></li>
-        <li><RouterLink to="/productos" @click="closeMenu">Nuestros Productos</RouterLink></li>
-        <li><RouterLink to="/contacto" @click="closeMenu">Contacto</RouterLink></li>
+        <li><RouterLink to="/" @click="handleNavClick('Home')">Inicio</RouterLink></li>
+        <li><RouterLink to="/servicios" @click="handleNavClick('Servicios')">Servicios</RouterLink></li>
+        <li><RouterLink to="/nosotros" @click="handleNavClick('Nosotros')">Nosotros</RouterLink></li>
+        <li><RouterLink to="/productos" @click="handleNavClick('Productos')">Nuestros Productos</RouterLink></li>
+        <li><RouterLink to="/contacto" @click="handleNavClick('Contacto')">Contacto</RouterLink></li>
       </ul>
     </nav>
   </header>
@@ -50,6 +50,22 @@ const closeMenu = () => {
   isMenuOpen.value = false;
   document.body.style.overflow = '';
 };
+
+// Analytics integration
+import { useGtag } from "vue-gtag-next";
+const { event } = useGtag();
+
+const handleNavClick = (label) => {
+  // Track navigation click
+  event('menu_click', {
+    'event_category': 'navigation',
+    'event_label': label
+  });
+  
+  // Close menu if open (mobile)
+  closeMenu();
+};
+
 </script>
 
 <style scoped>

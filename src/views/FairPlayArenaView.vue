@@ -69,32 +69,33 @@
             <p class="audience-text text-center">
               Para deportistas amateurs, clubes y ligas locales que buscan organizarse mejor, reducir conflictos y vivir el deporte de forma justa y transparente. Construyamos juntos un ecosistema deportivo más seguro, honesto y entretenido.
             </p>
+          </br>
+            <h3 class="cta-slogan text-center">Juega limpio, Juega Arena!</h3>
         </div>
     </section>
 
-    <!-- Call to Action / Footer -->
-    <section class="cta-section container mt-xl mb-xl text-center fade-in">
-       <div class="cta-content">
-           <h3 class="cta-slogan text-gradient">Juega limpio, Juega Arena!</h3>
-        </div>
-            <section class="download-cards container mt-xl mb-xl text-center fade-in">
+    <!-- Download Cards -->
+    <section class="download-cards container mt-xl mb-xl text-center fade-in">
+       <h3 class="cta-slogan text-gradient">Descargas Disponibles.</h3>
       <div class="card left-card">
         <a href="https://fairplay-links.3ldago.workers.dev/j/p/e4ccfff7-c1e6-4230-b94e-3d8fad637ba3"
            target="_blank"
-           rel="noopener">
+           rel="noopener"
+           @click="trackDownload('android_card')">
           <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                alt="Google Play Store"
                class="store-badge"/>
         </a>
       </div>
       <div class="card right-card">
-        <a href="#" class="pending-ios">
+        <a href="#"
+           class="pending-ios"
+           @click="trackDownload('ios_pending')">
           <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                alt="Apple App Store (pending)"
                class="store-badge"/>
         </a>
       </div>
-    </section>
     </section>
 
     <!-- Download Cards -->
@@ -103,7 +104,17 @@
 </template>
 
 <script setup>
-// Logic specific to products view if needed
+import { useGtag } from "vue-gtag-next";
+
+const { event } = useGtag();
+
+const trackDownload = (platform) => {
+  event('download_app', {
+    'event_category': 'engagement',
+    'event_label': platform,
+    'value': 1
+  });
+};
 </script>
 
 <style scoped>
@@ -258,6 +269,12 @@
 
   .cta-slogan {
       font-size: 1.5rem;
+  }
+
+  /* Stack download cards on mobile */
+  .download-cards {
+    flex-direction: column;
+    gap: var(--spacing-md);
   }
 }
 </style>
