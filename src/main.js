@@ -5,12 +5,15 @@ import router from "./router";
 import App from "./App.vue";
 import "./styles/main.css";
 
-import * as VueGtag from "vue-gtag";
+import VueGtag from "vue-gtag-next";
 
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
-app.use(VueGtag.default || VueGtag, {
-    config: { id: import.meta.env.VITE_GA_MEASUREMENT_ID }
-}, router);
+
+// Register VueGtag plugin correctly
+app.use(VueGtag, {
+    property: { id: import.meta.env.VITE_GA_MEASUREMENT_ID }
+});
+
 app.mount("#app");
