@@ -8,6 +8,7 @@ import Nosotros from "../pages/Nosotros.vue";
 import ProductsListView from "../views/ProductsListView.vue";
 import FairPlayProjectView from "../views/FairPlayProjectView.vue";
 import FairPlayArenaView from "../views/FairPlayArenaView.vue";
+import TenderBotView from "../views/TenderBotView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import Gracias from "../components/Gracias.vue";
 
@@ -79,6 +80,14 @@ const routes = [
                 },
                 "description": "Plataforma para conectar deportistas, equipos y ligas. Organiza partidos, registra rendimiento y construye tu reputación deportiva."
             }
+        }
+    },
+    {
+        path: "/productos/tender-bot",
+        component: TenderBotView,
+        meta: {
+            title: "Tender Bot: Agente Autónomo de Licitaciones",
+            description: "Inteligencia artificial que busca, lee, analiza y filtra bases de licitaciones. Tu analista comercial 24/7."
         }
     },
     {
