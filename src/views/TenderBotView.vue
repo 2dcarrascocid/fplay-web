@@ -21,7 +21,7 @@
       <p class="text-center mb-lg description-text">
         A diferencia de los buscadores tradicionales que solo rastrean palabras clave en títulos, nuestro Agente:
       </p>
-      <div class="features-grid">
+       <div class="features-grid">
         <article class="feature-card fade-in" style="animation-delay: 0.1s">
           <div class="feature-icon">👁️</div>
           <h3>Accede a lo Invisible</h3>
@@ -40,29 +40,29 @@
           <p>Distingue el matiz del negocio (ej. sabe que "Limpieza de Virus" es Ciberseguridad y no Aseo Industrial), eliminando el 95% del "ruido" y falsos positivos.</p>
         </article>
       </div>
+      <br>
     </section>
+    <section class="products-showcase container mt-xl mb-lg">
 
-    <!-- Promise & Result Section -->
-    <section class="target-audience container mt-xl fade-in">
-        <div class="audience-card">
-            <h2 class="section-title text-center text-gradient mb-md">La promesa de valor</h2>
-            <p class="audience-text text-center">
+       <div class="products-grid">
+         <div class="product-link-placeholder fade-in">
+             <h2 class="section-title text-center text-gradient mb-md">La promesa de valor</h2>
+                     <p class="audience-text text-center">
               Dejamos de entregarte listas interminables de enlaces para revisar. Te entregamos <strong>Decisiones de Postulación</strong>: Un reporte claro con los requisitos, riesgos y una recomendación de "Postular / No Postular" enviada proactivamente a tu flujo de trabajo (WhatsApp/API).
             </p>
-            <br>
-            <div class="result-box mt-md">
-                <h3 class="cta-slogan text-center text-accent">Resultado</h3>
-                <p class="text-center text-lg">
+         </div>
+         <div class="product-link-placeholder fade-in">
+          <h2 class="section-title text-center text-gradient mb-md">Resultado</h2>
+                   <p class="audience-text text-center">
                     Convierte 10 horas semanales de lectura humana en minutos de revisión estratégica.
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section container mt-xl mb-xl text-center fade-in">
+                <section class="cta-section container mt-xl mb-xl text-center fade-in">
        <RouterLink to="/contacto" class="btn btn-primary btn-lg">Solicitar Demo</RouterLink>
     </section>
+         </div>
+       </div>
+    </section>
+
 
   </div>
 </template>
@@ -169,6 +169,18 @@ import { RouterLink } from 'vue-router';
 .fade-in {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
+}
+
+.products-showcase {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-xl);
+}
+
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
 }
 
 @keyframes fadeIn {

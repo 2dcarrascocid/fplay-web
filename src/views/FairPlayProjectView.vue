@@ -15,7 +15,7 @@
 
     <!-- Project Features Grid -->
     <section class="features-section container mt-lg">
-      <h2 class="section-title text-center text-gradient mb-lg">Funcionalidades Principales</h2>
+      <h2 class="section-title text-center text-gradient mb-lg">Funciones principales</h2>
       <div class="features-grid">
         <article class="feature-card fade-in" style="animation-delay: 0.1s">
           <div class="feature-icon">🏆</div>
@@ -53,11 +53,12 @@
           <p>Acceso individual para que cada jugador revise sus estadísticas y calendario.</p>
         </article>
       </div>
+      <br>
     </section>
 
     <!-- Products Showcase Placeholder -->
     <section class="products-showcase container mt-xl mb-lg">
-       <h2 class="section-title text-center text-gradient mb-lg">Nuestros Productos</h2>
+       <h2 class="section-title text-center text-gradient mb-lg">Productos</h2>
        <div class="products-grid">
          <!-- Placeholder for actual product links -->
          <div class="product-link-placeholder fade-in">
@@ -72,6 +73,8 @@
          </div>
        </div>
     </section>
+    
+
   </div>
 </template>
 

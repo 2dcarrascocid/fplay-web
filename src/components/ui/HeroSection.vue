@@ -1,11 +1,11 @@
 <template>
   <section class="hero-section text-center mt-lg mb-lg fade-in">
     <div class="container relative z-10">
-      <h1 class="hero-title">Digitalizamos el deporte chileno</h1>
-      <p class="hero-subtitle">Software, automatización y rendimiento para organizaciones deportivas en Chile.</p>
+      <h1 class="hero-title">Desarrollamos software que transforma organizaciones</h1>
+      <p class="hero-subtitle">Software a medida, automatización y soluciones digitales escalables para clubes, empresas e instituciones en Chile.</p>
 
       <div class="hero-actions">
-        <button class="btn btn-primary" @click="goContact">Contáctanos</button>
+        <button class="btn btn-primary" @click="goContact">Hablemos de tu proyecto</button>
         <button class="btn btn-secondary" @click="goServicios">Ver servicios</button>
       </div>
     </div>

@@ -1,8 +1,8 @@
 <template>
   <section class="container mt-lg mb-lg">
-    <h1>Contáctanos</h1>
+    <h1>Hablemos de tu proyecto</h1>
     <p class="mb-lg text-center">
-      Si estás interesado en transformar la gestión del deporte comunal y deseas más información sobre cómo nuestra plataforma puede ayudarte, por favor completa el siguiente formulario. Estamos comprometidos a promover una cultura deportiva justa y transparente.
+     Si estás interesado en transformar la gestión de organizaciones, comunidades o proyectos y deseas más información sobre cómo nuestra plataforma puede ayudarte, te invitamos a completar el siguiente formulario. Estamos comprometidos con impulsar una cultura de gestión moderna, transparente y eficiente, aplicable a distintas áreas de desarrollo social, comunitario y organizacional.
     </p>
 
     <form class="card" @submit.prevent="sendEmail">

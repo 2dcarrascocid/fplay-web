@@ -2,39 +2,58 @@
   <section class="container mt-lg">
     <HeroSection />
 
-    <h2 class="text-center mt-lg mb-lg">Nuestros Servicios</h2>
+    <h2 class="text-center mt-lg mb-lg">¿Qué hacemos?</h2>
+    <p class="text-center mb-lg">Desarrollamos soluciones tecnológicas a medida y productos digitales escalables.</p>
     <div class="flex gap-lg justify-center mt-lg wrap-cards">
 
       <BaseCard style="width: 320px;" class="service-card">
         <div class="card-icon">💻</div>
-        <h3>Software Deportivo</h3>
-        <p>Desarrollo de plataformas a medida para clubes, academias y federaciones.</p>
+        <h3>Software a Medida</h3>
+        <p>Desarrollamos plataformas personalizadas para organizaciones deportivas, empresas e instituciones.</p>
       </BaseCard>
 
       <BaseCard style="width: 320px;" class="service-card">
         <div class="card-icon">⚙️</div>
-        <h3>Automatización</h3>
-        <p>Digitalizamos procesos administrativos y deportivos.</p>
+        <h3>Gestión de Eventos y Operaciones</h3>
+        <p>Soluciones para campeonatos, eventos, flujos operativos y control en tiempo real.</p>
       </BaseCard>
 
       <BaseCard style="width: 320px;" class="service-card">
         <div class="card-icon">🏆</div>
-        <h3>Gestión de Torneos</h3>
-        <p>Herramientas para organizar campeonatos, fixtures y rankings en tiempo real.</p>
+        <h3>Aplicaciones Web y Móviles</h3>
+        <p>Desarrollo de apps y plataformas digitales para usuarios, equipos y comunidades.</p>
+      </BaseCard>
+    </div>
+
+    
+    <h2 class="text-center mt-lg mb-lg">Cómo trabajamos</h2>
+        <p class="text-center mb-lg">Operamos bajo un modelo de software factory, acompañando a nuestros clientes desde la idea hasta la implementación y evolución de sus soluciones digitales.</p>
+    <div class="flex gap-lg justify-center mt-lg wrap-cards">
+
+      <BaseCard style="width:540px;" class="service-card">
+        <div class="card-icon"> 🧠</div>
+        <ul>
+          <li>✔ Levantamiento de requerimientos</li>
+          <li>✔ Diseño UX/UI</li>
+          <li>✔ Desarrollo y arquitectura</li>
+          <li>✔ Integraciones y escalabilidad</li>
+          <li>✔ Soporte y evolución continua</li>
+        </ul>
+        <br>
+        <button class="btn btn-secondary" @click="goProductos">Ver productos</button>
       </BaseCard>
 
-      <BaseCard style="width: 320px;" class="service-card">
-        <div class="card-icon">📱</div>
-        <h3>Software para aficionados</h3>
-        <p>Desarrollo de app para la organizacion de eventos deportivos presenciales y online.</p>
-      </BaseCard>
+
     </div>
   </section>
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
 import HeroSection from "../components/ui/HeroSection.vue";
 import BaseCard from "../components/base/BaseCard.vue";
+const goProductos = () => router.push("/productos");
 </script>
 
 <style scoped>

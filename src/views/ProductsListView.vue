@@ -1,9 +1,9 @@
 <template>
   <div class="products-list-page bg-gradient-dark">
     <div class="container fade-in">
-      <h1 class="text-center text-gradient mb-xl">Nuestros Productos</h1>
+      <h1 class="text-center text-gradient mb-xl">Productos</h1>
       <p class="mb-lg text-center description-text">
-        Innovación tecnológica al servicio del deporte. Desarrollamos herramientas digitales intuitivas y potentes que transforman la experiencia de jugadores, organizadores y clubes, llevando la gestión deportiva al siguiente nivel.
+      Desarrollamos productos digitales y soluciones tecnológicas propias que nacen desde la experiencia en terreno y la ingeniería de software, orientadas a resolver desafíos reales de gestión, operación y comunicación en organizaciones deportivas y otros entornos organizacionales.
       </p>
       
       <div class="products-grid">

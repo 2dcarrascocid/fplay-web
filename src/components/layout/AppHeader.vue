@@ -23,7 +23,7 @@
         <li><RouterLink to="/" @click="handleNavClick('Home')">Inicio</RouterLink></li>
         <li><RouterLink to="/servicios" @click="handleNavClick('Servicios')">Servicios</RouterLink></li>
         <li><RouterLink to="/nosotros" @click="handleNavClick('Nosotros')">Nosotros</RouterLink></li>
-        <li><RouterLink to="/productos" @click="handleNavClick('Productos')">Nuestros Productos</RouterLink></li>
+        <li><RouterLink to="/productos" @click="handleNavClick('Productos')">Productos</RouterLink></li>
         <li><RouterLink to="/contacto" @click="handleNavClick('Contacto')">Contacto</RouterLink></li>
       </ul>
     </nav>

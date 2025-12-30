@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import { updateHead } from "../utils/seo";
 
 import Home from "../pages/Home.vue";
-import Servicios from "../pages/Servicios.vue";
+import Servicios from "../views/Servicios.vue";
 import Contacto from "../pages/Contacto.vue";
-import Nosotros from "../pages/Nosotros.vue";
+import Nosotros from "../views/Nosotros.vue";
 import ProductsListView from "../views/ProductsListView.vue";
 import FairPlayProjectView from "../views/FairPlayProjectView.vue";
 import FairPlayArenaView from "../views/FairPlayArenaView.vue";
@@ -41,7 +41,7 @@ const routes = [
         path: "/nosotros",
         component: Nosotros,
         meta: {
-            title: "Sobre Nosotros | Fair Play Chile",
+            title: "Nosotros | Fair Play Chile",
             description: "Conoce al equipo detrás de Fair Play Chile. Nuestra misión es elevar el estándar del deporte amateur y profesional."
         }
     },
