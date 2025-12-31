@@ -17,32 +17,34 @@ const routes = [
         path: "/",
         component: Home,
         meta: {
-            title: "Fair Play Chile | Gestión y Tecnología Deportiva",
-            description: "Expertos en gestión de ligas, control de acceso y tecnología deportiva. Descubre cómo profesionalizar tu organización deportiva con Fair Play Chile."
+            title: "Fair Play Chile | Tecnología y Gestión Digital",
+            description: "Desarrollamos soluciones tecnológicas y plataformas digitales para organizaciones modernas. Automatizamos procesos, mejoramos la gestión y potenciamos el crecimiento de tu negocio."
         }
     },
     {
         path: "/servicios",
         component: Servicios,
         meta: {
-            title: "Servicios de Gestión Deportiva | Fair Play Chile",
-            description: "Ofrecemos control de acceso, gestión de mesas, administración financiera y soluciones tecnológicas para clubes y ligas deportivas."
+            title: "Servicios Tecnológicos | Fair Play Chile",
+                description: "Ofrecemos servicios de desarrollo de software, automatización de procesos, control operativo y soluciones digitales a medida para organizaciones modernas."
         }
     },
     {
         path: "/contacto",
         component: Contacto,
         meta: {
-            title: "Contáctanos | Fair Play Chile",
-            description: "¿Necesitas ayuda con tu liga o evento deportivo? Ponte en contacto con el equipo de Fair Play Chile hoy mismo."
+            title: "Contacto | Fair Play Chile",
+            description:
+            "Ponte en contacto con nuestro equipo para conocer cómo nuestras soluciones tecnológicas pueden ayudar a optimizar la gestión y los procesos de tu organización."
         }
-    },
+            },
     {
         path: "/nosotros",
         component: Nosotros,
         meta: {
-            title: "Nosotros | Fair Play Chile",
-            description: "Conoce al equipo detrás de Fair Play Chile. Nuestra misión es elevar el estándar del deporte amateur y profesional."
+            title: "Quiénes Somos | Fair Play Chile",
+            description:
+            "Conoce al equipo detrás de Fair Play Chile y nuestra visión en el desarrollo de soluciones tecnológicas, productos digitales y plataformas de gestión para organizaciones modernas."
         }
     },
     {
@@ -57,8 +59,8 @@ const routes = [
         path: "/productos/fair-play",
         component: FairPlayProjectView,
         meta: {
-            title: "Software de Gestión Deportiva | Fair Play Project",
-            description: "La solución integral para la administración de campeonatos, partidos y estadísticas. Optimiza tu liga con Fair Play Project."
+            title: "FairPlay Club: Software de Gestión Deportiva",
+            description: "Una solución moderna para la gestión de clubes deportivos."
         }
     },
     {
