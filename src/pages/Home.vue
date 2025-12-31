@@ -15,7 +15,7 @@
       <BaseCard style="width: 320px;" class="service-card">
         <div class="card-icon">⚙️</div>
         <h3>Gestión de Eventos y Operaciones</h3>
-        <p>Soluciones para campeonatos, eventos, flujos operativos y control en tiempo real.</p>
+        <p>Soluciones para eventos, flujos operativos y control de procesos en tiempo real.</p>
       </BaseCard>
 
       <BaseCard style="width: 320px;" class="service-card">

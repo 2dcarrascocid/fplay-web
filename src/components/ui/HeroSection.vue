@@ -1,7 +1,7 @@
 <template>
   <section class="hero-section text-center mt-lg mb-lg fade-in">
     <div class="container relative z-10">
-      <h1 class="hero-title">Desarrollamos software que transforma organizaciones</h1>
+      <h1 class="hero-title">Convertimos ideas en soluciones digitales escalables y sostenibles.</h1>
       <p class="hero-subtitle">Software a medida, automatización y soluciones digitales escalables para clubes, empresas e instituciones en Chile.</p>
 
       <div class="hero-actions">
