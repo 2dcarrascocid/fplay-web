@@ -21,23 +21,12 @@ export const tenderbotService = {
         return api.get(`/tenderbot/pagos`, { params: { suscripcion_id: suscripcionId } });
     },
 
-    // Webpay (Placeholder / Hook)
-    startWebpayPlus(data) {
-        // data puede ser { suscripcionId, pagoId, amount, ... }
-        // Si el backend tuviera endpoint: return api.post('/tenderbot/webpay/init', data);
-        
-        // Mock temporal
-        console.log('Iniciando Webpay Plus con:', data);
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                // Simular respuesta de Webpay (token + url)
-                resolve({
-                    data: {
-                        token: 'mock_token_ws_' + Date.now(),
-                        url: 'https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions', // URL real de integración
-                    }
-                });
-            }, 1000);
-        });
+    // Webpay
+    startWebpayPlus(pagoId) {
+        return api.post(`/tenderbot/pagos/${pagoId}/init-webpay`);
+    },
+
+    commitWebpay(token) {
+        return api.post('/tenderbot/pagos/webpay-commit', { token_ws: token });
     }
 };

@@ -61,7 +61,8 @@ export const useTenderbotStore = defineStore('tenderbot', {
                     }
                     throw err;
                 }
-                this.cliente = clienteResponse.data;
+              
+                this.cliente = clienteResponse.data.cliente;
 
                 // 2. Crear Suscripción
                 const suscripcionData = {
@@ -69,6 +70,7 @@ export const useTenderbotStore = defineStore('tenderbot', {
                     plan_id: this.selectedPlan.id,
                     periodicidad: periodicidad, // 'MENSUAL' | 'ANUAL'
                 };
+                  console.log("data::::::",suscripcionData)
                 const suscripcionResponse = await tenderbotService.createSuscripcion(suscripcionData);
                 this.suscripcion = suscripcionResponse.data;
 
@@ -79,7 +81,8 @@ export const useTenderbotStore = defineStore('tenderbot', {
                     // Buscar pago pendiente
                     const pagosResponse = await tenderbotService.getPagos(this.suscripcion.id);
                     // Asumiendo que devuelve array y tomamos el último pendiente
-                    const pagos = pagosResponse.data;
+                    const pagos = pagosResponse.data.pagos;
+
                     this.pago = pagos.find(p => p.estado === 'PENDIENTE') || pagos[0];
                 }
 
@@ -96,15 +99,27 @@ export const useTenderbotStore = defineStore('tenderbot', {
             this.loading = true;
             this.error = null;
             try {
-                const data = {
-                    suscripcionId: this.suscripcion.id,
-                    pagoId: this.pago?.id,
-                    amount: this.pago?.monto
-                };
-                const response = await tenderbotService.startWebpayPlus(data);
+                if (!this.pago?.id) {
+                    throw new Error("No hay pago pendiente para iniciar");
+                }
+                const response = await tenderbotService.startWebpayPlus(this.pago.id);
                 return response.data; // { token, url }
             } catch (err) {
                 this.error = 'Error al iniciar pago';
+                throw err;
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        async confirmPayment(token) {
+            this.loading = true;
+            this.error = null;
+            try {
+                const response = await tenderbotService.commitWebpay(token);
+                return response.data;
+            } catch (err) {
+                this.error = 'Error al confirmar pago';
                 throw err;
             } finally {
                 this.loading = false;
