@@ -1,9 +1,11 @@
 import api from '@/services/api';
+import planesData from '@/assets/planes.json';
 
 export const tenderbotService = {
     // Planes
     getPlanes() {
-        return api.get('/tenderbot/planes');
+        // Return local data wrapped in a structure compatible with axios response
+        return Promise.resolve({ data: planesData });
     },
 
     // Clientes
@@ -23,7 +25,7 @@ export const tenderbotService = {
 
     // Webpay
     startWebpayPlus(pagoId, payload = {}) {
-        const basePayload = { returnUrl: 'http://localhost:8080/tenderbot/pago/validacion' };
+        const basePayload = { returnUrl: `${window.location.origin}/tenderbot/pago/validacion` };
         return api.post(
             `/tenderbot/pagos/${pagoId}/init-webpay`,
             { ...basePayload, ...payload }

@@ -67,7 +67,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { tenderbotService } from '../services/tenderbotService';
-import jsPDF from 'jspdf';
+import { jsPDF } from 'jspdf';
 
 const route = useRoute();
 const loading = ref(true);
@@ -132,40 +132,76 @@ const generarPdf = () => {
     const marginLeft = 20;
     let cursorY = 20;
 
-    doc.setFontSize(16);
-    doc.text('Comprobante de Pago - Tender Bot', marginLeft, cursorY);
-
+    // Título
+    doc.setFontSize(22);
+    doc.setTextColor(40, 40, 40);
+    doc.text('Comprobante de Pago', marginLeft, cursorY);
+    
     cursorY += 10;
-    doc.setFontSize(12);
-    doc.text(`Fecha: ${formatFecha(transaccion.value.transaction_date || new Date().toISOString())}`, marginLeft, cursorY);
+    doc.setFontSize(14);
+    doc.setTextColor(100, 100, 100);
+    doc.text('TenderBot', marginLeft, cursorY);
 
+    // Línea separadora
+    cursorY += 5;
+    doc.setDrawColor(200, 200, 200);
+    doc.line(marginLeft, cursorY, 190, cursorY);
+
+    cursorY += 15;
+    doc.setFontSize(10);
+    doc.setTextColor(120, 120, 120);
+    doc.text(`Fecha de emisión: ${formatFecha(new Date().toISOString())}`, marginLeft, cursorY);
+
+    cursorY += 15;
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Detalle de la transacción', marginLeft, cursorY);
+    
     cursorY += 10;
-    doc.text('Datos de la transacción', marginLeft, cursorY);
+    doc.setFontSize(11);
+    doc.setTextColor(60, 60, 60);
 
-    cursorY += 8;
+    const lineHeight = 8;
+
     if (transaccion.value.buy_order) {
-        doc.text(`Orden de compra: ${transaccion.value.buy_order}`, marginLeft, cursorY);
-        cursorY += 7;
+        doc.text('Orden de compra:', marginLeft, cursorY);
+        doc.text(String(transaccion.value.buy_order), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
     }
+    
     if (transaccion.value.amount != null) {
-        doc.text(`Monto: ${formatMonto(transaccion.value.amount)}`, marginLeft, cursorY);
-        cursorY += 7;
+        doc.text('Monto:', marginLeft, cursorY);
+        doc.text(formatMonto(transaccion.value.amount), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
     }
+    
     if (transaccion.value.authorization_code) {
-        doc.text(`Código de autorización: ${transaccion.value.authorization_code}`, marginLeft, cursorY);
-        cursorY += 7;
+        doc.text('Código de autorización:', marginLeft, cursorY);
+        doc.text(String(transaccion.value.authorization_code), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
     }
+    
+    if (transaccion.value.transaction_date) {
+        doc.text('Fecha transacción:', marginLeft, cursorY);
+        doc.text(formatFecha(transaccion.value.transaction_date), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
     const last4 = ultimosDigitosTarjeta.value;
     if (last4) {
-        doc.text(`Tarjeta: **** **** **** ${last4}`, marginLeft, cursorY);
-        cursorY += 7;
+        doc.text('Tarjeta:', marginLeft, cursorY);
+        doc.text(`**** **** **** ${last4}`, marginLeft + 60, cursorY);
+        cursorY += lineHeight;
     }
 
-    cursorY += 5;
-    doc.setFontSize(10);
-    doc.text('Este comprobante ha sido generado a partir de la respuesta de Transbank.', marginLeft, cursorY);
+    // Pie de página
+    cursorY += 20;
+    doc.setFontSize(9);
+    doc.setTextColor(150, 150, 150);
+    doc.text('Este comprobante es generado automáticamente por TenderBot.', marginLeft, cursorY);
+    doc.text('Gracias por tu preferencia.', marginLeft, cursorY + 5);
 
-    doc.save('comprobante-pago-tenderbot.pdf');
+    doc.save(`comprobante_tenderbot_${transaccion.value.buy_order || 'pago'}.pdf`);
 };
 </script>
 
