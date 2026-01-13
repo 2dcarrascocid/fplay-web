@@ -14,8 +14,7 @@ import Gracias from "../components/Gracias.vue";
 
 // TenderBot Module Views
 import TenderBotCheckout from "../modules/tenderbot/pages/CheckoutView.vue";
-import TenderBotPagoExito from "../modules/tenderbot/pages/PagoExito.vue";
-import TenderBotPagoFallo from "../modules/tenderbot/pages/PagoFallo.vue";
+import TenderBotValidacion from "../modules/tenderbot/pages/ValidacionPago.vue";
 
 const routes = [
     {
@@ -109,17 +108,10 @@ const routes = [
         }
     },
     {
-        path: "/tenderbot/pago/exito",
-        component: TenderBotPagoExito,
+        path: "/tenderbot/pago/validacion",
+        component: TenderBotValidacion,
         meta: {
-            title: "Pago Exitoso | Tender Bot"
-        }
-    },
-    {
-        path: "/tenderbot/pago/fallo",
-        component: TenderBotPagoFallo,
-        meta: {
-            title: "Error en Pago | Tender Bot"
+            title: "Procesando Pago | Tender Bot"
         }
     },
     {

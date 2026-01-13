@@ -23,10 +23,12 @@ export const tenderbotService = {
 
     // Webpay
     startWebpayPlus(pagoId) {
-        return api.post(`/tenderbot/pagos/${pagoId}/init-webpay`);
+        console.log("commitWebpay:::::::::")
+        return api.post(`/tenderbot/pagos/${pagoId}/init-webpay`, {  returnUrl: 'http://localhost:8080/tenderbot/pago/validacion' });
     },
 
     commitWebpay(token) {
+
         return api.post('/tenderbot/pagos/webpay-commit', { token_ws: token });
     }
 };
