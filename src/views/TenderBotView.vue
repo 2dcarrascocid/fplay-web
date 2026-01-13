@@ -57,7 +57,7 @@
                     Convierte 10 horas semanales de lectura humana en minutos de revisión estratégica.
                 </p>
                 <section class="cta-section container mt-xl mb-xl text-center fade-in">
-       <RouterLink to="/contacto" class="btn btn-primary btn-lg">Solicitar Demo</RouterLink>
+       <RouterLink to="/tenderbot/checkout" class="btn btn-primary btn-lg">Ver Planes </RouterLink>
     </section>
          </div>
        </div>

@@ -12,6 +12,10 @@ import TenderBotView from "../views/TenderBotView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import Gracias from "../components/Gracias.vue";
 
+// TenderBot Module Views
+import TenderBotCheckout from "../modules/tenderbot/pages/CheckoutView.vue";
+import TenderBotValidacion from "../modules/tenderbot/pages/ValidacionPago.vue";
+
 const routes = [
     {
         path: "/",
@@ -90,6 +94,26 @@ const routes = [
         meta: {
             title: "Tender Bot: Agente Autónomo de Licitaciones",
             description: "Inteligencia artificial que busca, lee, analiza y filtra bases de licitaciones. Tu analista comercial 24/7."
+        }
+    },
+    // TenderBot Checkout Routes
+    {
+        path: "/tenderbot/planes",
+        redirect: "/tenderbot/checkout" // Redirigir al wizard ya que el paso 1 es planes
+    },
+    {
+        path: "/tenderbot/checkout",
+        component: TenderBotCheckout,
+        meta: {
+            title: "Suscripción Tender Bot",
+            description: "Elige tu plan y comienza a automatizar tus licitaciones."
+        }
+    },
+    {
+        path: "/tenderbot/pago/validacion",
+        component: TenderBotValidacion,
+        meta: {
+            title: "Procesando Pago | Tender Bot"
         }
     },
     {

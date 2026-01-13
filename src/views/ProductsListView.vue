@@ -7,6 +7,20 @@
       </p>
       
       <div class="products-grid">
+              <!-- Card: Tender Bot -->
+        <article class="product-card">
+          <div class="icon-wrapper">
+             <span class="product-icon">🤖</span>
+          </div>
+          <h3>Tender Bot</h3>
+          <p>
+            Agente autónomo de licitaciones. IA que busca, lee, analiza y filtra bases técnicas por ti, funcionando como analista comercial 24/7.
+          </p>
+          <RouterLink to="/productos/tender-bot" class="btn btn-primary w-full mt-auto">
+            Ver Detalles
+          </RouterLink>
+        </article>
+
                 <!-- Card: FairPlay Arena -->
         <article class="product-card">
           <div class="icon-wrapper">
@@ -43,20 +57,7 @@
           </RouterLink>
         </article>
 
-        <!-- Card: Tender Bot -->
-        <article class="product-card">
-          <div class="icon-wrapper">
-             <span class="product-icon">🤖</span>
-          </div>
-          <h3>Tender Bot</h3>
-          <p>
-            Agente autónomo de licitaciones. IA que busca, lee, analiza y filtra bases técnicas por ti, funcionando como analista comercial 24/7.
-          </p>
-          <RouterLink to="/productos/tender-bot" class="btn btn-primary w-full mt-auto">
-            Ver Detalles
-          </RouterLink>
-        </article>
-
+  
 
 
         <!-- Placeholder Card -->
