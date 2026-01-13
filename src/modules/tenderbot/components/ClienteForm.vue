@@ -72,8 +72,12 @@
                 Mensual
             </label>
             <label class="radio-label">
+                <input type="radio" v-model="periodicidad" value="SEMESTRAL" />
+                Semestral (Ahorra 5%)
+            </label>
+            <label class="radio-label">
                 <input type="radio" v-model="periodicidad" value="ANUAL" />
-                Anual
+                Anual (Ahorra 20%)
             </label>
         </div>
       </div>
@@ -97,7 +101,11 @@ import { ref, reactive } from 'vue';
 
 const props = defineProps({
   loading: Boolean,
-  error: String
+  error: String,
+  periodicidadInicial: {
+    type: String,
+    default: 'MENSUAL'
+  }
 });
 
 const emit = defineEmits(['submit', 'back']);
@@ -111,7 +119,7 @@ const form = reactive({
   pais: 'Chile'
 });
 
-const periodicidad = ref('MENSUAL');
+const periodicidad = ref(props.periodicidadInicial || 'MENSUAL');
 
 const handleSubmit = () => {
   emit('submit', { cliente: { ...form }, periodicidad: periodicidad.value });
@@ -120,26 +128,30 @@ const handleSubmit = () => {
 
 <style scoped>
 .cliente-form-container {
-  background: #252525;
-  padding: 2rem;
-  border-radius: 12px;
+  background: var(--color-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
   max-width: 600px;
   margin: 0 auto;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 h3 {
-  color: #fff;
-  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
   text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.25rem;
 }
 
 .form-row {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-md);
 }
 .form-row .form-group {
     flex: 1;
@@ -148,30 +160,33 @@ h3 {
 label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #aaa;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.8rem;
-  background: #1a1a1a;
-  border: 1px solid #444;
-  border-radius: 6px;
-  color: #fff;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.5); /* Más oscuro que secondary */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
   font-size: 1rem;
+  transition: all 0.2s;
 }
 
 .form-input:focus {
-  border-color: #42b883;
+  border-color: var(--color-primary);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2); /* Sombra focus verde */
 }
 
 .periodicidad-selector {
-    background: #1a1a1a;
-    padding: 1rem;
-    border-radius: 6px;
-    border: 1px solid #333;
+    background: rgba(15, 23, 42, 0.5);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
 }
 
 .radio-group {
@@ -180,7 +195,7 @@ label {
 }
 
 .radio-label {
-    color: #fff;
+    color: var(--color-text);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -190,38 +205,51 @@ label {
 .form-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: var(--spacing-xl);
 }
 
 .btn-back {
   background: transparent;
-  color: #aaa;
+  color: var(--color-text-muted);
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.btn-back:hover {
+    color: var(--color-text);
 }
 
 .btn-continue {
-  background: #42b883;
+  background: var(--color-primary);
   color: #fff;
   border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 6px;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-continue:hover {
+    background: var(--color-primary-hover);
 }
 
 .btn-continue:disabled {
-  background: #2a6f50;
+  background: var(--color-border);
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .error-message {
-  margin-top: 1rem;
-  color: #ff4d4d;
+  margin-top: var(--spacing-md);
+  color: var(--color-danger);
   text-align: center;
-  padding: 0.5rem;
-  background: rgba(255, 77, 77, 0.1);
-  border-radius: 4px;
+  padding: 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 </style>

@@ -5,6 +5,8 @@ export const useTenderbotStore = defineStore('tenderbot', {
     state: () => ({
         planes: [],
         selectedPlan: null,
+        selectedPeriodicidad: 'MENSUAL',
+        montoPromocional: null,
         cliente: null,
         suscripcion: null,
         pago: null,
@@ -41,9 +43,23 @@ export const useTenderbotStore = defineStore('tenderbot', {
             }
         },
         
-        selectPlan(plan) {
+        selectPlan(plan, periodicidad = 'MENSUAL', monto = null) {
             this.selectedPlan = plan;
+            this.selectedPeriodicidad = periodicidad;
+            this.montoPromocional = monto != null ? monto : this.calcularMonto(plan, periodicidad);
             this.currentStep = 2;
+        },
+
+        calcularMonto(plan, periodicidad) {
+            if (!plan) return 0;
+            const base = plan.precio_mensual || 0;
+            if (periodicidad === 'SEMESTRAL') {
+                return Math.round(base * 6 * 0.95);
+            }
+            if (periodicidad === 'ANUAL') {
+                return Math.round(base * 12 * 0.8);
+            }
+            return base;
         },
 
         async registerClienteAndSuscripcion(clienteData, periodicidad) {
@@ -65,10 +81,13 @@ export const useTenderbotStore = defineStore('tenderbot', {
                 this.cliente = clienteResponse.data.cliente;
 
                 // 2. Crear Suscripción
+                this.selectedPeriodicidad = periodicidad;
+                this.montoPromocional = this.calcularMonto(this.selectedPlan, periodicidad);
+
                 const suscripcionData = {
                     cliente_id: this.cliente.id,
                     plan_id: this.selectedPlan.id,
-                    periodicidad: periodicidad, // 'MENSUAL' | 'ANUAL'
+                    periodicidad: periodicidad,
                 };
                   console.log("data::::::",suscripcionData)
                 const suscripcionResponse = await tenderbotService.createSuscripcion(suscripcionData);
@@ -102,7 +121,13 @@ export const useTenderbotStore = defineStore('tenderbot', {
                 if (!this.pago?.id) {
                     throw new Error("No hay pago pendiente para iniciar");
                 }
-                const response = await tenderbotService.startWebpayPlus(this.pago.id);
+                const monto = this.montoPromocional != null
+                    ? this.montoPromocional
+                    : this.calcularMonto(this.selectedPlan, this.selectedPeriodicidad);
+
+                const response = await tenderbotService.startWebpayPlus(this.pago.id, {
+                    monto,
+                });
                 return response.data; // { token, url }
             } catch (err) {
                 this.error = 'Error al iniciar pago';
@@ -128,6 +153,8 @@ export const useTenderbotStore = defineStore('tenderbot', {
 
         resetFlow() {
             this.selectedPlan = null;
+            this.selectedPeriodicidad = 'MENSUAL';
+            this.montoPromocional = null;
             this.cliente = null;
             this.suscripcion = null;
             this.pago = null;

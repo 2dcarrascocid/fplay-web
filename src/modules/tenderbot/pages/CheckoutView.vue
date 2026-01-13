@@ -21,7 +21,8 @@
                     v-for="plan in planes" 
                     :key="plan.id" 
                     :plan="plan"
-                    @select="handlePlanSelect(plan)"
+                    :selected="selectedPlan?.id === plan.id"
+                    @select="handlePlanSelect"
                 />
             </div>
         </section>
@@ -31,6 +32,7 @@
             <ClienteForm 
                 :loading="loading"
                 :error="error"
+                :periodicidad-inicial="selectedPeriodicidad"
                 @submit="handleClienteSubmit"
                 @back="currentStep = 1"
             />
@@ -43,6 +45,7 @@
                 :cliente="cliente"
                 :suscripcion="suscripcion"
                 :pago="pago"
+                :monto="montoPromocional"
                 :loading="loading"
                 :error="error"
                 @pay="handlePayment"
@@ -54,7 +57,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue';
+import { onMounted } from 'vue';
 import { useTenderbotStore } from '../stores/useTenderbotStore';
 import { storeToRefs } from 'pinia';
 import PlanCard from '../components/PlanCard.vue';
@@ -62,14 +65,14 @@ import ClienteForm from '../components/ClienteForm.vue';
 import CheckoutSummary from '../components/CheckoutSummary.vue';
 
 const store = useTenderbotStore();
-const { planes, selectedPlan, cliente, suscripcion, pago, loading, error, currentStep } = storeToRefs(store);
+const { planes, selectedPlan, selectedPeriodicidad, montoPromocional, cliente, suscripcion, pago, loading, error, currentStep } = storeToRefs(store);
 
 onMounted(() => {
     store.fetchPlanes();
 });
 
-const handlePlanSelect = (plan) => {
-    store.selectPlan(plan);
+const handlePlanSelect = ({ plan, periodicidad, monto }) => {
+    store.selectPlan(plan, periodicidad, monto);
 };
 
 const handleClienteSubmit = async ({ cliente, periodicidad }) => {
@@ -106,75 +109,81 @@ const handlePayment = async () => {
 <style scoped>
 .tenderbot-checkout {
     min-height: 100vh;
-    background: #121212;
-    color: #fff;
-    padding-bottom: 4rem;
+    /* Usar variables globales */
+    background: transparent; /* El body ya tiene el gradiente */
+    color: var(--color-text);
+    padding-bottom: var(--spacing-xl);
 }
 
 .checkout-header {
-    padding: 2rem 1rem;
-    background: #1a1a1a;
-    border-bottom: 1px solid #333;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: rgba(15, 23, 42, 0.6); /* Transparencia similar a navbar */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
     text-align: center;
+    margin-bottom: var(--spacing-lg);
 }
 
 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    background: -webkit-linear-gradient(45deg, #42b883, #35495e);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #4ade80 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 800;
 }
 
 .stepper {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--spacing-md);
     max-width: 600px;
     margin: 0 auto;
 }
 
 .step {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--color-text-muted);
     font-weight: 600;
+    transition: color 0.3s;
 }
 
 .step.active {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .step.completed {
-    color: #42b883;
+    color: var(--color-primary);
 }
 
 .line {
     width: 30px;
     height: 2px;
-    background: #333;
+    background: var(--color-border);
 }
 
 .checkout-content {
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .planes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
 }
 
 .loading, .error {
     text-align: center;
-    padding: 2rem;
+    padding: var(--spacing-lg);
     font-size: 1.2rem;
+    color: var(--color-text-muted);
 }
 
 .error {
-    color: #ff4d4d;
+    color: var(--color-danger);
 }
 </style>

@@ -22,9 +22,12 @@ export const tenderbotService = {
     },
 
     // Webpay
-    startWebpayPlus(pagoId) {
-        console.log("commitWebpay:::::::::")
-        return api.post(`/tenderbot/pagos/${pagoId}/init-webpay`, {  returnUrl: 'http://localhost:8080/tenderbot/pago/validacion' });
+    startWebpayPlus(pagoId, payload = {}) {
+        const basePayload = { returnUrl: 'http://localhost:8080/tenderbot/pago/validacion' };
+        return api.post(
+            `/tenderbot/pagos/${pagoId}/init-webpay`,
+            { ...basePayload, ...payload }
+        );
     },
 
     commitWebpay(token) {
