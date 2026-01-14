@@ -9,7 +9,7 @@
         </div>
         <div class="summary-row">
             <span>Periodicidad:</span>
-            <strong>{{ suscripcion?.periodicidad }}</strong>
+            <strong>{{ periodicidad || suscripcion?.periodicidad }}</strong>
         </div>
         <div class="summary-row">
             <span>Cliente:</span>
@@ -45,6 +45,7 @@ const props = defineProps({
   plan: Object,
   cliente: Object,
   suscripcion: Object,
+  periodicidad: String,
   pago: Object,
   monto: Number,
   loading: Boolean,

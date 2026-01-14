@@ -104,20 +104,12 @@
       </div>
       
       <div class="form-group periodicidad-selector">
-        <label>Facturación</label>
-        <div class="radio-group">
-            <label class="radio-label">
-                <input type="radio" v-model="periodicidad" value="MENSUAL" />
-                Mensual
-            </label>
-            <label class="radio-label">
-                <input type="radio" v-model="periodicidad" value="SEMESTRAL" />
-                Semestral (Ahorra 5%)
-            </label>
-            <label class="radio-label">
-                <input type="radio" v-model="periodicidad" value="ANUAL" />
-                Anual (Ahorra 20%)
-            </label>
+        <label>Facturación Seleccionada</label>
+        <div class="periodicidad-display">
+            <span class="period-badge">{{ periodicidadSeleccionada }}</span>
+            <span class="period-info" v-if="periodicidadSeleccionada === 'SEMESTRAL'">Ahorro 5%</span>
+            <span class="period-info" v-if="periodicidadSeleccionada === 'ANUAL'">Ahorro 20%</span>
+            <span class="period-price" v-if="monto">{{ formatCurrency(monto) }}</span>
         </div>
       </div>
 
@@ -142,15 +134,23 @@ import { useClienteValidation } from '../../../composables/useClienteValidation'
 const props = defineProps({
   loading: Boolean,
   error: String,
-  periodicidadInicial: {
+  periodicidadSeleccionada: {
     type: String,
-    default: 'MENSUAL'
+    required: true
+  },
+  monto: {
+    type: Number,
+    default: 0
   }
 });
 
 const emit = defineEmits(['submit', 'back']);
 
 const { errors, validateField, validateAll, normalizeData } = useClienteValidation();
+
+const formatCurrency = (value) => {
+    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(value || 0);
+};
 
 const form = reactive({
   razon_social: '',
@@ -161,8 +161,6 @@ const form = reactive({
   telefono: '',
   pais: 'Chile'
 });
-
-const periodicidad = ref(props.periodicidadInicial || 'MENSUAL');
 
 const handleBlur = (field) => {
   validateField(field, form[field], form);
@@ -197,7 +195,7 @@ const handleSubmit = async () => {
   // Eliminar email_confirmacion antes de enviar si no se necesita en backend
   delete normalizedForm.email_confirmacion;
 
-  emit('submit', { cliente: normalizedForm, periodicidad: periodicidad.value });
+  emit('submit', { cliente: normalizedForm });
 };
 </script>
 
@@ -280,18 +278,33 @@ label {
     border: 1px solid var(--color-border);
 }
 
-.radio-group {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.radio-label {
-    color: var(--color-text);
+.periodicidad-display {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.period-badge {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.25rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.period-info {
+    color: #facc15;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.period-price {
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-left: auto;
 }
 
 .form-actions {

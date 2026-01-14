@@ -43,10 +43,17 @@ export const useTenderbotStore = defineStore('tenderbot', {
             }
         },
         
-        selectPlan(plan, periodicidad = 'MENSUAL', monto = null) {
-            this.selectedPlan = plan;
-            this.selectedPeriodicidad = periodicidad;
-            this.montoPromocional = monto != null ? monto : this.calcularMonto(plan, periodicidad);
+        selectPlan(payload) {
+            // payload puede ser el plan directo (legacy) o { plan, periodicidad, monto }
+            if (payload.plan && payload.periodicidad) {
+                this.selectedPlan = payload.plan;
+                this.selectedPeriodicidad = payload.periodicidad;
+                this.montoPromocional = payload.monto;
+            } else {
+                this.selectedPlan = payload;
+                this.selectedPeriodicidad = 'MENSUAL';
+                this.montoPromocional = this.calcularMonto(payload, 'MENSUAL');
+            }
             this.currentStep = 2;
         },
 
@@ -62,7 +69,7 @@ export const useTenderbotStore = defineStore('tenderbot', {
             return base;
         },
 
-        async registerClienteAndSuscripcion(clienteData, periodicidad) {
+        async registerClienteAndSuscripcion(clienteData) {
             this.loading = true;
             this.error = null;
             try {
@@ -81,13 +88,10 @@ export const useTenderbotStore = defineStore('tenderbot', {
                 this.cliente = clienteResponse.data.cliente;
 
                 // 2. Crear Suscripción
-                this.selectedPeriodicidad = periodicidad;
-                this.montoPromocional = this.calcularMonto(this.selectedPlan, periodicidad);
-
                 const suscripcionData = {
                     cliente_id: this.cliente.id,
                     plan_id: this.selectedPlan.id,
-                    periodicidad: periodicidad,
+                    periodicidad: this.selectedPeriodicidad, // Usar del store
                 };
                   console.log("data::::::",suscripcionData)
                 const suscripcionResponse = await tenderbotService.createSuscripcion(suscripcionData);
