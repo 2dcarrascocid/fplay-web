@@ -21,7 +21,6 @@
                     v-for="plan in planes" 
                     :key="plan.id" 
                     :plan="plan"
-                    :selected="selectedPlan?.id === plan.id"
                     @select="handlePlanSelect"
                 />
             </div>
@@ -32,7 +31,8 @@
             <ClienteForm 
                 :loading="loading"
                 :error="error"
-                :periodicidad-inicial="selectedPeriodicidad"
+                :periodicidad-seleccionada="selectedPeriodicidad"
+                :monto="montoPromocional"
                 @submit="handleClienteSubmit"
                 @back="currentStep = 1"
             />
@@ -44,6 +44,7 @@
                 :plan="selectedPlan"
                 :cliente="cliente"
                 :suscripcion="suscripcion"
+                :periodicidad="selectedPeriodicidad"
                 :pago="pago"
                 :monto="montoPromocional"
                 :loading="loading"
@@ -71,13 +72,13 @@ onMounted(() => {
     store.fetchPlanes();
 });
 
-const handlePlanSelect = ({ plan, periodicidad, monto }) => {
-    store.selectPlan(plan, periodicidad, monto);
+const handlePlanSelect = (payload) => {
+    store.selectPlan(payload);
 };
 
-const handleClienteSubmit = async ({ cliente, periodicidad }) => {
+const handleClienteSubmit = async ({ cliente }) => {
     try {
-        await store.registerClienteAndSuscripcion(cliente, periodicidad);
+        await store.registerClienteAndSuscripcion(cliente);
     } catch (e) {
         // Error manejado en el store y mostrado vía state error
     }
