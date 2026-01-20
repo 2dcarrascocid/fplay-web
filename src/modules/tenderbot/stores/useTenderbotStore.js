@@ -146,6 +146,7 @@ export const useTenderbotStore = defineStore('tenderbot', {
             this.error = null;
             try {
                 const response = await tenderbotService.commitWebpay(token);
+                console.log("!response.data",response.data)
                 return response.data;
             } catch (err) {
                 this.error = 'Error al confirmar pago';
