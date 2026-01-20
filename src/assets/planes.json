@@ -10,7 +10,7 @@
     "activo": true,
     "created_at": "2026-01-12T18:33:27.43285+00:00",
     "updated_at": "2026-01-12T18:33:27.43285+00:00",
-    "precio_semestral": 60000
+    "precio_semestral": 90000
   },
   {
     "id": "25429b1c-5600-4662-bc7b-ae27aed86c4c",
@@ -23,6 +23,6 @@
     "activo": true,
     "created_at": "2026-01-12T18:33:27.43285+00:00",
     "updated_at": "2026-01-12T18:33:27.43285+00:00",
-    "precio_semestral": 90000
+    "precio_semestral": 360000
   }
 ]
