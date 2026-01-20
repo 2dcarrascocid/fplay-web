@@ -94,7 +94,9 @@ onMounted(async () => {
     try {
         // Confirmar transacción en el backend
         const response = await tenderbotService.commitWebpay(token);
-        transaccion.value = response?.data || response || null;
+        // Si response.data tiene propiedad 'payment', usar esa. De lo contrario, usar response.data completo.
+        const data = response?.data || response;
+        transaccion.value = data?.payment || data || null;
         success.value = true;
     } catch (err) {
         console.error(err);
@@ -108,7 +110,7 @@ onMounted(async () => {
 const ultimosDigitosTarjeta = computed(() => {
     const det = transaccion.value?.card_detail || transaccion.value?.cardDetail;
     if (!det) return '';
-    return det.last4 || det.last_digits || '';
+    return det.card_number || det.last4 || det.last_digits || '';
 });
 
 const formatMonto = (monto) => {
@@ -162,28 +164,71 @@ const generarPdf = () => {
     doc.setTextColor(60, 60, 60);
 
     const lineHeight = 8;
+    const t = transaccion.value;
 
-    if (transaccion.value.buy_order) {
+    if (t.buy_order) {
         doc.text('Orden de compra:', marginLeft, cursorY);
-        doc.text(String(transaccion.value.buy_order), marginLeft + 60, cursorY);
+        doc.text(String(t.buy_order), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.session_id) {
+        doc.text('ID Sesión:', marginLeft, cursorY);
+        doc.text(String(t.session_id), marginLeft + 60, cursorY);
         cursorY += lineHeight;
     }
     
-    if (transaccion.value.amount != null) {
+    if (t.amount != null) {
         doc.text('Monto:', marginLeft, cursorY);
-        doc.text(formatMonto(transaccion.value.amount), marginLeft + 60, cursorY);
+        doc.text(formatMonto(t.amount), marginLeft + 60, cursorY);
         cursorY += lineHeight;
     }
     
-    if (transaccion.value.authorization_code) {
+    if (t.authorization_code) {
         doc.text('Código de autorización:', marginLeft, cursorY);
-        doc.text(String(transaccion.value.authorization_code), marginLeft + 60, cursorY);
+        doc.text(String(t.authorization_code), marginLeft + 60, cursorY);
         cursorY += lineHeight;
     }
     
-    if (transaccion.value.transaction_date) {
+    if (t.transaction_date) {
         doc.text('Fecha transacción:', marginLeft, cursorY);
-        doc.text(formatFecha(transaccion.value.transaction_date), marginLeft + 60, cursorY);
+        doc.text(formatFecha(t.transaction_date), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.payment_type_code) {
+        doc.text('Tipo de pago:', marginLeft, cursorY);
+        doc.text(String(t.payment_type_code), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.response_code !== undefined) {
+        doc.text('Código respuesta:', marginLeft, cursorY);
+        doc.text(String(t.response_code), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.installments_number) {
+        doc.text('Cuotas:', marginLeft, cursorY);
+        doc.text(String(t.installments_number), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.installments_amount) {
+        doc.text('Monto cuota:', marginLeft, cursorY);
+        doc.text(formatMonto(t.installments_amount), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.vci) {
+        doc.text('VCI:', marginLeft, cursorY);
+        doc.text(String(t.vci), marginLeft + 60, cursorY);
+        cursorY += lineHeight;
+    }
+
+    if (t.status) {
+        doc.text('Estado:', marginLeft, cursorY);
+        doc.text(String(t.status), marginLeft + 60, cursorY);
         cursorY += lineHeight;
     }
 
@@ -201,7 +246,7 @@ const generarPdf = () => {
     doc.text('Este comprobante es generado automáticamente por TenderBot.', marginLeft, cursorY);
     doc.text('Gracias por tu preferencia.', marginLeft, cursorY + 5);
 
-    doc.save(`comprobante_tenderbot_${transaccion.value.buy_order || 'pago'}.pdf`);
+    doc.save(`comprobante_tenderbot_${t.buy_order || 'pago'}.pdf`);
 };
 </script>
 
