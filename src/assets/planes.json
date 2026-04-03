@@ -4,25 +4,25 @@
     "codigo": "BASIC",
     "nombre": "Básico",
     "descripcion": "Tender Bot: búsqueda + filtrado inicial + reportes estándar.",
-    "precio_mensual": 10000,
-    "precio_anual": 100000,
+    "precio_mensual": 15000,
+    "precio_anual": 180000,
     "moneda": "CLP",
     "activo": true,
     "created_at": "2026-01-12T18:33:27.43285+00:00",
     "updated_at": "2026-01-12T18:33:27.43285+00:00",
-    "precio_semestral": 60000
+    "precio_semestral": 90000
   },
   {
     "id": "25429b1c-5600-4662-bc7b-ae27aed86c4c",
     "codigo": "FULL",
     "nombre": "Full",
     "descripcion": "Tender Bot: lectura profunda de bases PDF + filtro semántico avanzado + envío proactivo WhatsApp/API.",
-    "precio_mensual": 15000,
-    "precio_anual": 150000,
+    "precio_mensual": 60000,
+    "precio_anual": 720000,
     "moneda": "CLP",
     "activo": true,
     "created_at": "2026-01-12T18:33:27.43285+00:00",
     "updated_at": "2026-01-12T18:33:27.43285+00:00",
-    "precio_semestral": 90000
+    "precio_semestral": 360000
   }
 ]
