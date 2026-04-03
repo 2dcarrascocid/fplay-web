@@ -64,7 +64,7 @@
          <div class="product-link-placeholder fade-in">
            <h3>Producto Principal</h3>
            <p>Próximamente disponible</p>
-           <button class="btn btn-primary mt-auto">Ver Demo</button>
+           <a href="https://miclub.fairplay-chile.cl" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto">Ver</a>
          </div>
          <div class="product-link-placeholder fade-in">
            <h3>App Móvil</h3>

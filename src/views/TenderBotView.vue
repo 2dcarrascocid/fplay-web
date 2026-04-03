@@ -57,7 +57,7 @@
                     Convierte 10 horas semanales de lectura humana en minutos de revisión estratégica.
                 </p>
                 <section class="cta-section container mt-xl mb-xl text-center fade-in">
-       <RouterLink to="/tenderbot/checkout" class="btn btn-primary btn-lg">Ver Planes </RouterLink>
+       <a href="https://tb.fairplay-chile.cl/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Ver</a>
     </section>
          </div>
        </div>
@@ -68,7 +68,6 @@
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
