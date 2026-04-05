@@ -7,9 +7,10 @@
         Una solución moderna para la gestión de clubes deportivos
       </p>
       <div class="hero-tags">
-        <span class="tag">Nominas</span>
+        <span class="tag">Planillas</span>
+        <span class="tag">Eventos</span>
         <span class="tag">Finanzas</span>
-        <span class="tag">Clubes</span>
+        <span class="tag">Dashboard</span>
       </div>
     </header>
 
@@ -18,39 +19,27 @@
       <h2 class="section-title text-center text-gradient mb-lg">Funciones principales</h2>
       <div class="features-grid">
         <article class="feature-card fade-in" style="animation-delay: 0.1s">
-          <div class="feature-icon">🏆</div>
-          <h3>Campeonatos y Ligas</h3>
-          <p>Configura torneos, fases de grupos y playoffs con generación automática de fixtures.</p>
+          <div class="feature-icon">👥</div>
+          <h3>Administrador de Planillas</h3>
+          <p>Gestiona el registro completo de jugadores: perfiles, nóminas, documentos y verificaciones del plantel en un solo lugar.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.2s">
-          <div class="feature-icon">📈</div>
-          <h3>Estadísticas en Vivo</h3>
-          <p>Tablas de posiciones, goleadores y tarjetas actualizadas en tiempo real.</p>
+          <div class="feature-icon">📅</div>
+          <h3>Gestión de Eventos</h3>
+          <p>Crea y administra partidos, entrenamientos y actividades del club. Agenda, notifica y lleva el historial de todos tus eventos.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.3s">
           <div class="feature-icon">💰</div>
           <h3>Control Financiero</h3>
-          <p>Gestión transparente de cuotas, pagos de arbitraje y balances del club.</p>
+          <p>Registra ingresos, egresos y cuotas del club. Visualiza balances, genera reportes y mantén las finanzas bajo control.</p>
         </article>
 
         <article class="feature-card fade-in" style="animation-delay: 0.4s">
-          <div class="feature-icon">📝</div>
-          <h3>Ficha de Partido</h3>
-          <p>Digitaliza el control del juego con actas digitales y reportes de árbitros.</p>
-        </article>
-        
-        <article class="feature-card fade-in" style="animation-delay: 0.5s">
-          <div class="feature-icon">👥</div>
-          <h3>Gestión de Plantillas</h3>
-          <p>Administración de nóminas, verificaciones y perfiles de jugadores.</p>
-        </article>
-
-        <article class="feature-card fade-in" style="animation-delay: 0.6s">
-          <div class="feature-icon">📱</div>
-          <h3>Portal de Jugadores</h3>
-          <p>Acceso individual para que cada jugador revise sus estadísticas y calendario.</p>
+          <div class="feature-icon">📊</div>
+          <h3>Dashboard Informativo</h3>
+          <p>Panel central con métricas clave del club: asistencia, estado financiero, próximos eventos y actividad reciente en tiempo real.</p>
         </article>
       </div>
       <br>
@@ -63,8 +52,7 @@
          <!-- Placeholder for actual product links -->
          <div class="product-link-placeholder fade-in">
            <h3>Producto Principal</h3>
-           <p>Próximamente disponible</p>
-           <a href="https://miclub.fairplay-chile.cl" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto">Ver</a>
+         <a href="https://miclub.fairplay-chile.cl" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto">Ver</a>
          </div>
          <div class="product-link-placeholder fade-in">
            <h3>App Móvil</h3>
@@ -118,8 +106,14 @@
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
+}
+
+@media (max-width: 640px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .feature-card {
