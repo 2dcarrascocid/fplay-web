@@ -60,16 +60,18 @@
   
 
 
-        <!-- Placeholder Card -->
-        <article class="product-card placeholder">
+        <!-- Card: FairPlay Active -->
+        <article class="product-card">
           <div class="icon-wrapper">
-             <span class="product-icon">📱</span>
+             <span class="product-icon">📅</span>
           </div>
-          <h3>Próximo Proyecto</h3>
+          <h3>FairPlay Active</h3>
           <p>
-            Espacio reservado para futuros desarrollos y nuevas ideas innovadoras.
+            Reserva y pago en línea de recintos deportivos y talleres municipales. Agenda canchas, inscribe talleres y gestiona cupos desde un solo lugar.
           </p>
-          <button class="btn btn-secondary w-full mt-auto" disabled>Próximamente</button>
+          <a href="https://activ.fairplay-chile.cl" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full mt-auto">
+            Ver Detalles
+          </a>
         </article>
       </div>
     </div>
@@ -153,11 +155,6 @@
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
   color: var(--color-dark-text-muted);
-}
-
-.placeholder {
-  opacity: 0.7;
-  border-style: dashed;
 }
 
 .w-full {
