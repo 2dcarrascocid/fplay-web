@@ -30,7 +30,7 @@ const routes = [
         component: Servicios,
         meta: {
             title: "Servicios Tecnológicos | Fair Play Chile",
-                description: "Ofrecemos servicios de desarrollo de software, automatización de procesos, control operativo y soluciones digitales a medida para organizaciones modernas."
+            description: "Ofrecemos servicios de desarrollo de software, automatización de procesos, control operativo y soluciones digitales a medida para organizaciones modernas."
         }
     },
     {
@@ -39,16 +39,16 @@ const routes = [
         meta: {
             title: "Contacto | Fair Play Chile",
             description:
-            "Ponte en contacto con nuestro equipo para conocer cómo nuestras soluciones tecnológicas pueden ayudar a optimizar la gestión y los procesos de tu organización."
+                "Ponte en contacto con nuestro equipo para conocer cómo nuestras soluciones tecnológicas pueden ayudar a optimizar la gestión y los procesos de tu organización."
         }
-            },
+    },
     {
         path: "/nosotros",
         component: Nosotros,
         meta: {
             title: "Quiénes Somos | Fair Play Chile",
             description:
-            "Conoce al equipo detrás de Fair Play Chile y nuestra visión en el desarrollo de soluciones tecnológicas, productos digitales y plataformas de gestión para organizaciones modernas."
+                "Conoce al equipo detrás de Fair Play Chile y nuestra visión en el desarrollo de soluciones tecnológicas, productos digitales y plataformas de gestión para organizaciones modernas."
         }
     },
     {
@@ -63,7 +63,7 @@ const routes = [
         path: "/productos/fair-play",
         component: FairPlayProjectView,
         meta: {
-            title: "FairPlay Club: Software de Gestión Deportiva",
+            title: "SuperLigas: Software de Gestión Deportiva",
             description: "Una solución moderna para la gestión de clubes deportivos."
         }
     },
