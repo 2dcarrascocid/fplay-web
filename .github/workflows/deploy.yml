@@ -42,11 +42,28 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       # ---------- DEPLOY S3 ----------
-      - name: Sync files to S3
+      # 1) Assets con hash en el nombre (dist/assets): caché largo e inmutable.
+      #    Se suben primero para que existan antes que el nuevo index.html.
+      - name: Upload hashed assets to S3
+        run: |
+          aws s3 sync dist/assets s3://${{ secrets.S3_BUCKET }}/assets \
+            --cache-control "max-age=31536000,public,immutable"
+
+      # 2) Resto (index.html, favicon, logo, sitemap, robots...): sin caché,
+      #    para que los navegadores siempre tomen el último deploy.
+      - name: Sync HTML and public files to S3
         run: |
           aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} \
             --delete \
-            --cache-control "max-age=31536000,public"
+            --exclude "assets/*" \
+            --cache-control "no-cache,must-revalidate"
+
+      # 3) Limpia assets antiguos que ya no referencia el nuevo build
+      - name: Remove stale assets from S3
+        run: |
+          aws s3 sync dist/assets s3://${{ secrets.S3_BUCKET }}/assets \
+            --delete \
+            --cache-control "max-age=31536000,public,immutable"
 
       # ---------- INVALIDAR CLOUDFRONT ----------
       - name: Create CloudFront invalidation
