@@ -43,18 +43,18 @@
           <div class="icon-wrapper">
              <span class="product-icon">⚽</span>
           </div>
-          <h3>FairPlay Club</h3>
+          <h3>SuperLigas</h3>
           <p>
-            Plataforma moderna para la gestión integral de clubes deportivos, finanzas y jugadores.
+            Plataforma moderna para la gestión integral de ligas deportivas, jugadores, finanzas y torneos. Ideal para clubes deportivos, asociaciones y federaciones que buscan digitalizar su gestión y mejorar la experiencia de sus jugadores.
           </p>
             <!-- <div class="tags">
               <span class="tag">Vue 3</span>
               <span class="tag">Vite</span>
               <span class="tag">Supabase</span>
             </div> -->
-          <RouterLink to="/productos/fair-play" class="btn btn-primary w-full mt-auto">
+          <a href="https://superligas.fairplay-chile.cl/" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full mt-auto">
             Ver Detalles
-          </RouterLink>
+          </a>
         </article>
 
   
@@ -92,7 +92,7 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: var(--spacing-lg);
   max-width: 1000px;
   margin: 0 auto;
@@ -167,5 +167,50 @@
   margin-right: auto;
   font-size: 1.125rem;
   line-height: 1.6;
+}
+
+/* Móvil */
+@media (max-width: 640px) {
+  .products-list-page {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .mb-xl {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .description-text {
+    font-size: 1rem;
+  }
+
+  .products-grid {
+    gap: var(--spacing-md);
+  }
+
+  .product-card {
+    padding: var(--spacing-md);
+  }
+
+  .product-card:hover {
+    transform: none;
+  }
+
+  .icon-wrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .product-icon {
+    font-size: 2rem;
+  }
+
+  .product-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .product-card p {
+    margin-bottom: var(--spacing-md);
+  }
 }
 </style>
