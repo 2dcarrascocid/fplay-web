@@ -47,18 +47,31 @@ jobs:
         env:
           BUCKET: ${{ secrets.S3_BUCKET }}
         run: |
-          echo "== Identidad que usa el workflow =="
-          aws sts get-caller-identity --query Arn --output text | sed 's/[0-9]\{12\}/<cuenta>/'
-          echo "== Formato del secret S3_BUCKET =="
-          echo "largo: ${#BUCKET}"
-          [[ "$BUCKET" == s3://* ]] && echo "ERROR: incluye 's3://'"
-          [[ "$BUCKET" == */* ]] && echo "ERROR: contiene '/'"
-          [[ "$BUCKET" =~ [[:space:]] ]] && echo "ERROR: contiene espacios o salto de línea"
-          [[ "$BUCKET" =~ [A-Z] ]] && echo "ERROR: contiene mayúsculas"
-          echo "== HeadBucket =="
-          aws s3api head-bucket --bucket "$BUCKET" && echo "OK: bucket existe y es accesible" || true
-          echo "== ListObjectsV2 =="
-          aws s3api list-objects-v2 --bucket "$BUCKET" --max-items 1 --query 'KeyCount' && echo "OK: puede listar" || true
+          set +e
+          ARN=$(aws sts get-caller-identity --query Arn --output text 2>&1 | sed 's/[0-9]\{12\}/<cuenta>/')
+          FORMATO=""
+          [[ "$BUCKET" == s3://* ]] && FORMATO+="incluye 's3://'; "
+          [[ "$BUCKET" == */* ]] && FORMATO+="contiene '/'; "
+          [[ "$BUCKET" =~ [[:space:]] ]] && FORMATO+="contiene espacios o salto de línea; "
+          [[ "$BUCKET" =~ [A-Z] ]] && FORMATO+="contiene mayúsculas; "
+          [[ -z "$FORMATO" ]] && FORMATO="OK"
+          # Solo inicio y fin del nombre, para reconocerlo sin exponerlo completo
+          PISTA="${BUCKET:0:4}…${BUCKET: -2} (largo ${#BUCKET})"
+          HEAD=$(aws s3api head-bucket --bucket "$BUCKET" 2>&1 && echo "OK")
+          LIST=$(aws s3api list-objects-v2 --bucket "$BUCKET" --max-items 1 --query KeyCount 2>&1 && echo "OK")
+          {
+            echo "## Diagnóstico AWS"
+            echo "| Chequeo | Resultado |"
+            echo "|---|---|"
+            echo "| Usuario IAM | \`$ARN\` |"
+            echo "| Región configurada | \`$AWS_REGION\` |"
+            echo "| Bucket (pista) | \`$PISTA\` |"
+            echo "| Formato del secret | $FORMATO |"
+            echo "| HeadBucket | \`$(echo $HEAD | tr '\n|' ' /')\` |"
+            echo "| ListObjectsV2 | \`$(echo $LIST | tr '\n|' ' /')\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "::notice title=Usuario IAM::$ARN"
+          exit 0
 
       # 1) Assets con hash en el nombre (dist/assets): caché largo e inmutable.
       #    Se suben primero para que existan antes que el nuevo index.html.
