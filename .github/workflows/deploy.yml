@@ -42,6 +42,24 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       # ---------- DEPLOY S3 ----------
+      # Diagnóstico temporal de permisos (quitar cuando el deploy funcione)
+      - name: Debug AWS identity and bucket
+        env:
+          BUCKET: ${{ secrets.S3_BUCKET }}
+        run: |
+          echo "== Identidad que usa el workflow =="
+          aws sts get-caller-identity --query Arn --output text | sed 's/[0-9]\{12\}/<cuenta>/'
+          echo "== Formato del secret S3_BUCKET =="
+          echo "largo: ${#BUCKET}"
+          [[ "$BUCKET" == s3://* ]] && echo "ERROR: incluye 's3://'"
+          [[ "$BUCKET" == */* ]] && echo "ERROR: contiene '/'"
+          [[ "$BUCKET" =~ [[:space:]] ]] && echo "ERROR: contiene espacios o salto de línea"
+          [[ "$BUCKET" =~ [A-Z] ]] && echo "ERROR: contiene mayúsculas"
+          echo "== HeadBucket =="
+          aws s3api head-bucket --bucket "$BUCKET" && echo "OK: bucket existe y es accesible" || true
+          echo "== ListObjectsV2 =="
+          aws s3api list-objects-v2 --bucket "$BUCKET" --max-items 1 --query 'KeyCount' && echo "OK: puede listar" || true
+
       # 1) Assets con hash en el nombre (dist/assets): caché largo e inmutable.
       #    Se suben primero para que existan antes que el nuevo index.html.
       - name: Upload hashed assets to S3
